@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AnimeLab - Aprendiendo HTML, CSS y JavaScript</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+
+      <!-- Botón hamburguesa -->
+      <button class="menu-toggle" id="menu-toggle">
+        <span class="line"></span>
+        <span class="line"></span> 
+        <span class="line"></span>
+      </button>
+
+      <h1 class="logo">AnimeLab</h1>
+
+      <!--Agregar informacion-->
+
+      <nav class="main-nav" id="main-nav">
+        <ul class="nav-list">
+          <li><a href="#home" class="nav-link">Inicio</a></li>
+          <li><a href="#characters" class="nav-link">Personajes</a></li>
+          <li><a href="#gallery" class="nav-link">Galería</a></li>
+          <li><a href="#contact" class="nav-link">Contacto</a></li>
+        </ul>
+        <button id="aboutBtn" class="btn-outline">Acerca de</button>
+
+      </nav>
+
+      <button id="themeBtn" class="theme-btn" title="Cambiar tema">🌙</button>
+    
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero container">
+      <h2>Bienvenidos a AnimeLab</h2>
+      <p>Este sitio sirve para que los estudiantes evalúen la integración de <strong>HTML</strong>, <strong>CSS</strong> y <strong>JavaScript</strong>.</p>
+      <div class="quick-actions">
+        <button id="showHint" class="btn">Ver pista (JS)</button>
+        <button onclick="document.querySelector('#gallery').scrollIntoView({behavior:'smooth'})" class="btn">Ir a Galería</button>
+      </div>
+    </section>
+
+    <section id="characters" class="container cards">
+      <h3>Personajes destacados</h3>
+      <div class="card-grid">
+        <article class="card">
+          <div class="avatar avatar-1"></div>
+          <h4>Radamanthys</h4>
+          <p>Uno de los tres jueces el del inframundo más poderoso del ejército de Hades.</p>
+          <button class="btn btn-outline" onclick="showProfile('Radamanthys')">Ver Perfil</button>
+        </article>
+
+        <article class="card">
+          <div class="avatar avatar-2"></div>
+          <h4>Shaka</h4>
+          <p>Caballero dorado que custodia el sexto templo del santuario de Atena.</p>
+          <button class="btn btn-outline" onclick="showProfile('Shaka')">Ver Perfil</button>
+        </article>
+
+        <article class="card">
+          <div class="avatar avatar-3"></div>
+          <h4>Hypnos</h4>
+          <p>Dios del sueño, Consejero de Hades, Hermano gemelo de Thanatos.</p>
+          <button class="btn btn-outline" onclick="showProfile('Hypnos')">Ver Perfil</button>
+        </article>
+
+        <article class="card">
+          <div class="avatar avatar-4"></div>
+          <h4>Camus</h4>
+          <p>Caballero dorado que cuida el onceavo templo del santuario de Atena.</p>
+          <button class="btn btn-outline" onclick="showProfile('Camus')">Ver Perfil</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="gallery" class="container">
+      <h3>Galería</h3>
+      <p>Haz click en cualquier "tarjeta" para abrir una vista más grande.</p>
+      <div class="gallery-grid">
+        <figure class="thumb" onclick="openLightbox('assets/thumb1.svg')">
+          <img src="assets/thumb1.svg" alt="Ilustración 1" />
+          <figcaption>Ilustración 1</figcaption>
+        </figure>
+        <figure class="thumb" onclick="openLightbox('assets/thumb2.svg')">
+          <img src="assets/thumb2.svg" alt="Ilustración 2" />
+          <figcaption>Ilustración 2</figcaption>
+        </figure>
+        <figure class="thumb" onclick="openLightbox('assets/thumb3.svg')">
+          <img src="assets/thumb3.svg" alt="Ilustración 3" />
+          <figcaption>Ilustración 3</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="contact" class="container">
+      <h3>Contacto</h3>
+      <form id="contactForm" class="form">
+        <label>Nombre
+          <input type="text" id="name" required />
+        </label>
+        <label>Correo
+          <input type="email" id="email" required />
+        </label>
+        <label>Mensaje
+          <textarea id="message" rows="4" required></textarea>
+        </label>
+        <div class="form-actions">
+          <button type="submit" class="btn">Enviar</button>
+          <button type="reset" class="btn btn-outline">Limpiar</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Noticias -->
+    <section id="news" class="container">
+      <h3>Noticias / Próximos Estrenos</h3>
+
+      <div class="news-grid">
+
+        <article class="news-card">
+          <img src="img/Saint_Seiya_Soul_of_Gold_Serie.jpg" class="news-img">
+          <h4>Nuevo anime anunciado para el 2026</h4>
+          <p>Se confirma el lanzamiento de una nueva serie que promete revoluncionar el género shonen</p>
+          <button class="btn btn-outline" onclick="openNewsModal(1)">Leer más</button>
+        </article>
+
+        <article class="news-card">
+          <img src="img/Ranma_Remake.jpg" alt="Noticia 2">
+          <h4>Remake para el 2026</h4>
+          <p>Se confirma el lanzamiento de un remake que sera estrenado en primavera del proximo año</p>
+          <button class="btn btn-outline" onclick="openNewsModal(1)">Leer más</button>
+        </article>
+
+        <article class="news-card">
+          <img src="img/Pelicula_de_estreno.jpg" alt="Noticia 3">
+          <h4>Nuevo anime anunciado para el 2026</h4>
+          <p>Nueva pelicula anunciada para el 2026 basada en la obra original del mangaka Masami Kurumada </p>
+          <button class="btn btn-outline" onclick="openNewsModal(1)">Leer más</button>
+        </article>
+
+      </div>
+    </section> 
+
+    <section class="about-section container" id="aboutSection">
+  <h3 class="section-title">Acerca de AnimeLab</h3>
+
+  <div class="about-content">
+    <p><strong>Proyecto:</strong> AnimeLab — Plataforma educativa para practicar HTML, CSS y JavaScript.</p>
+    <p><strong>Desarrollado por:</strong> Itza Caamal Pedro Emmanuel</p>
+    <p><strong>Grupo:</strong> TTD-4A</p>
+    <p><strong>Asignatura:</strong> Desarrollo Web</p>
+    <p><strong>Descripción:</strong> Sitio diseñado para practicar diseño, estilos, animaciones, validación y funciones interactivas.</p>
+
+    <div class="about-links">
+      <a href="#" target="_blank">🌐 Portafolio</a>
+      <a href="#" target="_blank">📸 Instagram</a>
+      <a href="#" target="_blank">💼 LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+
+  </main>
+
+  <footer class="site-footer container">
+    <p>AnimeLab • Proyecto educativo — HTML • CSS • JavaScript</p>
+    <p class="small">Abre el proyecto en Visual Studio Code para editar los archivos en /css, /js y /assets.</p>
+
+    <!-- año dinámico -->
+    <p>© <span id="currentYear"></span> AnimeLab. Todos los derechos reservados.</p>
+
+    <!-- Redes sociales -->
+    <div class="social-links">
+      <a href="https://instagram.com" target="_blank" class="social-icon instagram">Instagram</a>
+    <a href="https://youtube.com" target="_blank" class="social-icon youtube">YouTube</a>
+    <a href="https://facebook.com" target="_blank" class="social-icon facebook">Facebook</a>
+    <a href="https://x.com" target="_blank" class="social-icon x">X</a>
+  </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+    <img id="lightboxImg" alt="Vista ampliada" />
+  </div>
+
+  
+  <!-- Música Anime (no se reproduce automáticamente) -->
+<section class="music-player container">
+  <h3 class="section-title">Música Anime</h3>
+
+  <audio id="animeMusic" src="assets/audio/Saint_Seiya_Original_Soundtrack_IX_OST_01_ Prelude.mp3"></audio>
+
+  <div class="music-controls">
+    <button id="playPauseBtn" class="music-btn">▶️ Reproducir</button>
+    <button id="muteBtn" class="music-btn">🔇 Silenciar</button>
+
+    <label class="volume-label">
+      Volumen:
+      <input id="volumeControl" type="range" min="0" max="1" step="0.05" value="1">
+    </label>
+  </div>
+</section>
+  <script src="js/main.js"></script>
+
+  <!-- Modal de noticias -->
+<div id="newsModal" class="news-modal" onclick="closeNewsModal(event)">
+  <div class="news-modal-content">
+    <button id="closeNewsModalBtn" class="close-btn">✖</button>
+    <h2 id="newsModalTitle"></h2>
+    <p id="newsModalBody"></p>
+  </div>
+</div>
+</body>
+</html>
